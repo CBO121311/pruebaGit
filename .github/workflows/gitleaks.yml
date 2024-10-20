@@ -1,0 +1,21 @@
+name: Gitleaks Scanner
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run Gitleaks to detect leaks
+      uses: zricethezav/gitleaks-action@v2.2.0
+      with:
+        config_path: ''
+        verbose: true
